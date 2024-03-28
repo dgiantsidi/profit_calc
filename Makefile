@@ -1,8 +1,14 @@
 export CXX = g++
 
-target: all main
+target: all main run clean
 
-all: 
+all: run
 
-main: main.cpp
-	$(CXX) -Wall $@.cpp -o $@ -lfmt
+main: clean
+	$(CXX) -Wall -O3 -std=c++2a -std=gnu++2a $@.cpp -o $@ -lfmt
+
+run: main
+	./$^
+
+clean:
+	rm -f main
